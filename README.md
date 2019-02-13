@@ -32,3 +32,4 @@
 
 5. Learn about service workers and Offline support: https://codelabs.developers.google.com/codelabs/offline/#0
 6. Use what you just learn to make your App work Offline
+7. Deploy your App to Heroky and submit your solution url! (https://dev.to/smithmanny/deploy-your-react-app-to-heroku-2b6f)
