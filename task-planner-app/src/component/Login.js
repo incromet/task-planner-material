@@ -59,7 +59,7 @@ export class Login extends React.Component{
                         <br />
                         <Typography variant="headline" style={{fontSize:33}} >Task Planner</Typography>
                         <br />
-                        <LibraryBooks style={{fontSize: '60px'}} />
+                        <LibraryBooks style={{fontSize: '60px', color: 'gray'}} />
                         <form className="form">
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Email Address</InputLabel>
@@ -108,7 +108,7 @@ export class Login extends React.Component{
                             <br />
                             <br />
 
-                            <Typography>Don't have an account? <a href="#">Create one</a>.</Typography>
+                            <Typography>Don&#39;t have an account? <a href="#">Create one</a>.</Typography>
                         </form>
                     </Paper>
                 </main>
