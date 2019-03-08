@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {Login} from "./component/Login";
 import ResponsiveDrawer from "./component/Drawer";
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 
 const LoginView = () => (
@@ -12,6 +12,7 @@ const LoginView = () => (
 const DrawerView = () => (
     <ResponsiveDrawer/>
 );
+
 
 localStorage.setItem('username', 'admin');
 localStorage.setItem('password', 'admin');
@@ -24,17 +25,11 @@ class App extends Component {
         <Router>
           <div className="App">
 
-            <br/>
-            <br />
-            <br />
-
-            <li><Link to="/">Login</Link></li>
-            <li><Link to="/drawer">Drawer</Link></li>
-
             <div>
                 <Route exact path="/" component={LoginView}/>
-                <Route path="/drawer" component={DrawerView}/>
+                <Route path="/main" component={DrawerView}/>
             </div>
+
           </div>
         </Router>
     );

@@ -13,6 +13,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
+import {Link} from 'react-router-dom';
+
 export class Login extends React.Component{
 
     constructor(props) {
@@ -95,16 +97,18 @@ export class Login extends React.Component{
                             <br />
                             <br />
 
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className="submit"
-                                onClick={this.handleAuthentication}
-                            >
-                                LOGIN
-                            </Button>
+                            <Link to="/main">
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    className="submit"
+                                    onClick={this.handleAuthentication}
+                                >
+                                    LOGIN
+                                </Button>
+                            </Link>
                             <br />
                             <br />
 

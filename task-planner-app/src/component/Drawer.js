@@ -18,7 +18,8 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-
+import {TaskList} from "./TaskList";
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -62,6 +63,9 @@ const styles = theme => ({
     icon: {
         marginLeft: 104,
     },
+    logout: {
+        marginTop: "79vh",
+    },
 });
 
 class ResponsiveDrawer extends React.Component {
@@ -89,12 +93,14 @@ class ResponsiveDrawer extends React.Component {
                 <Divider />
                 <List>
                     {['Log Out'].map((text, index) => (
-                        <ListItem button key={text}>
+                        <Link to="/">
+                        <ListItem button key={text} className={classes.logout}>
                             <ListItemIcon>
                                 <MeetingRoomIcon />
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
+                        </Link>
                     ))}
                 </List>
             </div>
@@ -149,6 +155,7 @@ class ResponsiveDrawer extends React.Component {
                 </nav>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
+                    <TaskList/>
 
                 </main>
             </div>
