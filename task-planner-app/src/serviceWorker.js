@@ -21,7 +21,7 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if ((process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
@@ -30,6 +30,41 @@ export function register(config) {
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
+
+    window.self.addEventListener('install', (event) => {
+      event.waitUntil(async function() {
+        const cache = await caches.open('task-planner-app');
+        cache.addAll(
+            '/public/index.html',
+            '/public/index.html?homescreen=1',
+            '/?homescreen=1',
+            '/src/App.css',
+            '/src/App.js',
+            '/src/component/Drawer.js',
+            '/src/component/Login.css',
+            '/src/component/Login.js',
+            '/src/component/Task.css',
+            '/src/component/Task.js',
+            '/src/component/TaskList.js'
+        );
+      }());
+    });
+
+    window.self.addEventListener('fetch', (event) => {
+      event.respondWith(async function() {
+        const cache = await caches.open('task-planner-app');
+        const cachedResponse = await cache.match(event.request);
+        const networkResponsePromise = fetch(event.request);
+
+        event.waitUntil(async function() {
+          const networkResponse = await networkResponsePromise;
+          await cache.put(event.request, networkResponse.clone());
+        }());
+
+        // Returned the cached response if we have one, otherwise return the network response.
+        return cachedResponse || networkResponsePromise;
+      }());
+    });
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;

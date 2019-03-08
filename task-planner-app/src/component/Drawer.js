@@ -93,7 +93,7 @@ class ResponsiveDrawer extends React.Component {
                 <Divider />
                 <List>
                     {['Log Out'].map((text, index) => (
-                        <Link to="/">
+                        <Link to="/" key={index}>
                         <ListItem button key={text} className={classes.logout}>
                             <ListItemIcon>
                                 <MeetingRoomIcon />
